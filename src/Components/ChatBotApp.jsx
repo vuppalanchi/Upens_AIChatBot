@@ -11,6 +11,7 @@ const ChatBotApp = ({onGoBack, chats, setChats,activeChat,setActiveChat,onNewCha
     const [showEmojiPicker, setShowEmojiPicker] = useState(false)
     const [showChatList, setShowChatList] = useState(false)
     const chatEndRef = useRef(null)
+    //const openAIKey = import.meta.env.VITE_OPENAI_KEY
 
     
     useEffect(()=>{
@@ -52,12 +53,15 @@ const ChatBotApp = ({onGoBack, chats, setChats,activeChat,setActiveChat,onNewCha
         setIsTyping(true)
         
         //const response = await fetch("https://api.openai.com/v1/models",
+        //console.log('open api key is - ' + openAIKey)
         const response = await fetch('https://api.openai.com/v1/chat/completions', 
             {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",
-                    Authorization: `Bearer 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`
+                    //Authorization: `Bearer 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`
+                    Authorization: `Bearer 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`
+                    //Authorization: `'Bearer ' + {openAIKey}`
                 },
             body: JSON.stringify({
                 model: "gpt-4o-mini",
